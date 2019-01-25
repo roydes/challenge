@@ -1,0 +1,19 @@
+
+<section class="search-container">
+  <form class="form" [formGroup]="searchForm" (submit)="onSubmit($event)">
+      <mat-form-field class="form-field">
+        <input  matInput type="text" formControlName="searchInput" class="input" placeholder="search repository..."/>
+      </mat-form-field>
+      <button mat-button color="primary" type="submit">Search</button>
+  </form>
+  <div class="search-results" *ngIf="repositories">
+    <h4 class="title">Search results</h4>
+    <mat-list class="repository-list">
+      <mat-list-item role="listitem" class="item" *ngFor="let repository of repositories">
+          <mat-card class="repository" (click)="onSeeRepositoryDetail(repository)">
+              {{repository.name}}
+          </mat-card>
+      </mat-list-item>
+    </mat-list> 
+  </div>
+</section>
