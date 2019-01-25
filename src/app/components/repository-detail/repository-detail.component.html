@@ -9,7 +9,7 @@
         <span class="atribute">Language: </span> <span>{{repository.language}}</span>
       </div>
     <div class="info">
-      <span class="atribute">License: </span> <span>{{repository.license.name}}</span>
+      <span class="atribute">License: </span> <span>{{repository.license? repository.license.name : ''}}</span>
     </div>
     <div class="info">
       <span class="atribute">Created: </span> <span>{{repository.created_at}}</span>

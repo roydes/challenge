@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, DialogPosition } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { RepositoryDetailComponent } from '../repository-detail/repository-detail.component';
 @Component({
   selector: 'app-search',

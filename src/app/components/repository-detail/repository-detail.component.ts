@@ -7,7 +7,7 @@ import { SearchService } from '../../services/search.service';
   styleUrls: ['./repository-detail.component.scss']
 })
 export class RepositoryDetailComponent implements OnInit {
-    comments: any[];
+  comments: any[];
   constructor(
     public dialogRef: MatDialogRef<RepositoryDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public repository: any,
@@ -26,8 +26,4 @@ export class RepositoryDetailComponent implements OnInit {
         }
     );
   }
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }
