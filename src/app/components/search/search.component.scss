@@ -5,7 +5,20 @@
     width: 100%;
     .mat-card {
         width: 100%;
+        height: 100px;
         cursor: pointer;
+    }
+    .card-title {
+        color: #0366d6;
+    }
+    .repository-atribute {
+        margin-right: 20px;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+    .repository-atribute > .label {
+        font-family: bold;
     }
     > .form {
         display: flex;
@@ -22,6 +35,7 @@
         width: 100%;
     }
     > .search-results > .repository-list > .item {
+        height: auto;
         margin: 15px 0;
     }
 }

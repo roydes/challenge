@@ -1,5 +1,38 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-    {{repository.name}}
+
+<h1 mat-dialog-title>Repository: <a href="{{repository.svn_url}}" class="repository-link">{{repository.name}}</a></h1>
+<div mat-dialog-content class="repository-info">
+    <div class="info">
+      <span class="atribute">Author: </span>
+      <span>{{repository.owner.login}}</span> 
+    </div>
+    <div class="info">
+        <span class="atribute">Language: </span> <span>{{repository.language}}</span>
+      </div>
+    <div class="info">
+      <span class="atribute">License: </span> <span>{{repository.license.name}}</span>
+    </div>
+    <div class="info">
+      <span class="atribute">Created: </span> <span>{{repository.created_at}}</span>
+    </div>
+</div>
+<div mat-dialog-content class="search-results" *ngIf="comments">
+  <mat-list class="comments-list">
+    <mat-list-item role="listitem" class="item" *ngFor="let comment of comments">
+        <mat-card class="comment">
+            <mat-card-title class="card-title">User: {{comment.user.login}}</mat-card-title>
+            <mat-card-content>
+                <div class="comment-info">
+                  <div class="info">
+                    <span class="atribute">Author asociation: </span> <span>{{comment.author_association}}</span> 
+                  </div>
+                  <div class="info">
+                    <span class="atribute">Created: </span> <span>{{comment.created_at}}</span>
+                  </div>
+                </div>
+                {{comment.body}}
+            </mat-card-content>
+        </mat-card>
+    </mat-list-item>
+  </mat-list> 
 </div>
 

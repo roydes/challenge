@@ -6,12 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
+  url = 'https://api.github.com/search/repositories?q=';
   constructor(protected httpClient: HttpClient) { }
-  
-  fetch(search: String): Observable<any> {
+
+  fetchAll(search: string): Observable<any> {
     const keywords = search.replace(' ', '+');
     const query =  keywords + '+in:name,description,readme';
-    return this.httpClient
-      .get<any[]>( 'https://api.github.com/search/repositories?q=' + query);
+    return this.httpClient.get<any[]>( this.url + query);
+  }
+  fetchComments(commentsUrl: string): Observable<any> {
+    const url = commentsUrl.replace('{/number}', '');
+    return this.httpClient.get<any[]>(url);
   }
 }

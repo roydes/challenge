@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog, DialogPosition } from '@angular/material';
 import { RepositoryDetailComponent } from '../repository-detail/repository-detail.component';
 @Component({
   selector: 'app-search',
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
   onSubmit(event) {
     event.preventDefault();
     console.log('Searching for: ' + this.searchForm.controls.searchInput.value);
-    this.searchService.fetch(this.searchForm.controls.searchInput.value).subscribe(
+    this.searchService.fetchAll(this.searchForm.controls.searchInput.value).subscribe(
       (response) => {
         console.log(response);
         this.repositories = response.items;
@@ -34,6 +34,8 @@ export class SearchComponent implements OnInit {
     console.log(repository);
     const dialogRef = this.dialog.open(RepositoryDetailComponent, {
       width: '70%',
+      position: {'top': '5%'},
+      hasBackdrop: true,
       data: repository
     });
 
