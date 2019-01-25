@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { RepositoryDetailComponent } from '../repository-detail/repository-detail.component';
 @Component({
@@ -17,10 +17,11 @@ export class SearchComponent implements OnInit {
     public dialog: MatDialog ) { }
 
   ngOnInit() {
-    this.searchForm = this.formBuilder.group({searchInput: ['', []]});
+    this.searchForm = this.formBuilder.group({searchInput: ['', [Validators.required]]});
   }
   onSubmit(event) {
     event.preventDefault();
+    if (this.searchForm.controls.searchInput.value) {
     console.log('Searching for: ' + this.searchForm.controls.searchInput.value);
     this.searchService.fetchAll(this.searchForm.controls.searchInput.value).subscribe(
       (response) => {
@@ -28,7 +29,7 @@ export class SearchComponent implements OnInit {
         this.repositories = response.items;
       }
     );
-
+    }
   }
   onSeeRepositoryDetail(repository: any) {
     console.log(repository);

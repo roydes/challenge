@@ -14,6 +14,6 @@ describe('SearchService', () => {
   }));
   it('should be created', inject([SearchService], (service: SearchService) => {
     return service.fetchAll('Angular').toPromise()
-        .then( ( repositories ) => { expect(repositories.length).toBeGreaterThan(0)} );
+        .then(  ( repositories ) => { expect(repositories.length).toBeGreaterThan(0)} );
   }));
 });

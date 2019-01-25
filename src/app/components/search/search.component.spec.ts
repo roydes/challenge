@@ -34,4 +34,8 @@ describe('SearchComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.search-button')).toBeDefined();
   }));
+  it('should be valid form', () => {
+    component.searchForm.controls.searchInput.setValue('Angular');
+    expect(component.searchForm.valid).toBeTruthy();
+  });
 });
